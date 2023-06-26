@@ -13,6 +13,8 @@ migrate = Migrate(app, db)
 
 db.init_app(app)
 
+
+
 @app.route('/messages', methods=['GET'])
 def get_messages():
     messages = Message.query.all()
@@ -25,6 +27,7 @@ def get_messages():
             'created_at': message.created_at.strftime('%Y-%m-%d %H:%M:%S')
         })
     return jsonify(message_list)
+
 
 @app.route('/messages/<int:id>', methods=['GET'])
 def get_message_by_id(id):
